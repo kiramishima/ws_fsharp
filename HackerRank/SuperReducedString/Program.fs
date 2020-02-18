@@ -5,8 +5,23 @@ open System
 
 let rec superReducedString (s:String) =
     let str = List.ofSeq s
-    printf "%A" str
-    if str.Length = 0 then
+    (*let a = str.GetType()
+    printf "%A\n" a.FullName
+    printf "%A\n" str
+    printf "%A\n" str.Head
+    printf "%A\n" str.Tail
+    printf "%A\n" str.Tail.Head*)
+    match str with
+    | [] -> printf "Empty String"
+    | x::xs -> 
+        printfn "%A\n" x
+        printfn "%A\n" xs
+        if x = xs.Head then
+            superReducedString (xs.Tail |> Seq.map (fun a -> string(a)) |> String.concat "")
+        else
+            superReducedString (string(x)+(xs |> Seq.map (fun a -> string(a)) |> String.concat ""))
+    | x -> printf "%s" (x |> Seq.map (fun a -> string(a)) |> String.concat "")
+    (*if str.Length = 0 then
         s
     elif str.Length > 0 then
         let s2 = match str with
@@ -17,7 +32,7 @@ let rec superReducedString (s:String) =
             // superReducedString s2
             s
         | [] -> s
-        s2
+        s2*)
 
 
 (*let rec superReducedString (s:string): string =
