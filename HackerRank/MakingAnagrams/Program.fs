@@ -3,19 +3,16 @@
 open System
 
 let makingAnagrams (s1:string) (s2:string) =
-    let mutable idx = 0
-    let mutable idx2 = 0
-    let mutable acc = 0
-    for i in 0..s1.Length-1 do
-        let str = s1.[i]
-        idx2 <- s2.IndexOf(str)
-        if idx2 <> -1 then
-            idx <- idx2
-        else
-            acc <- acc+i
-    for i in 0..idx do
-        acc <- acc+i
-    acc
+    let rec matcher str (s:string) =
+        match str with
+        | x::_ when s.IndexOf(string(x)) <> -1 ->
+            let ix = s.IndexOf(string(x))
+            ix
+        | _ -> matcher str.Tail s
+    let b = Seq.toList s1
+    let a = matcher b s2
+    a
+
 
 [<EntryPoint>]
 let main argv =
