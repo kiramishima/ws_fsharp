@@ -20,8 +20,8 @@
             "env": {
                 "DOTNETBACKEND_PORT": "7077",
                 "FB_TOKEN": "",
-                "FB_APP_ID": "1413005965479539",
-                "FB_APP_SECRET": "83a7b86bf8edfb1811651c7ba98cfe0d"
+                "FB_APP_ID": "",
+                "FB_APP_SECRET": ""
             },
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
