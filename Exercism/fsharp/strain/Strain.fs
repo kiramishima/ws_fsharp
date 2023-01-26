@@ -15,3 +15,8 @@ let discard pred xs =
             let xr = xs |> Seq.toArray |> Array.partition pred
             match xr with
             | _, b -> b |> Array.toList
+// Recursivo
+let rec keep2 pred xs =
+    seq { for x in xs do if pred x then yield x }
+let discard2 pred xs =
+    keep2 (pred >> not) xs
